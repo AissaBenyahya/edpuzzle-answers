@@ -70,7 +70,15 @@ A video tutorial can be found [here](https://www.youtube.com/watch?v=zxZzB2KXCkw
 ### Method 2:
  1. Copy the following code into your clipboard:
  ```js
-javascript: fetch("https://raw.githubusercontent.com/AissaBenyahya/edpuzzle-answers/refs/heads/main/script.js").then(r => r.text()).then(r => eval(r))
+javascript:(function(){
+  fetch("https://cdn.jsdelivr.net/gh/AissaBenyahya/edpuzzle-answers@main/script.js")
+    .then(r => r.text())
+    .then(code => {
+      const script = document.createElement('script');
+      script.textContent = code;
+      document.head.appendChild(script).parentNode.removeChild(script);
+    });
+})();
  ```
  2. Right click on your bookmarks bar and click "add page."
  3. Set the name of the bookmark to whatever you want.
